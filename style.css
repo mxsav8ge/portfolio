@@ -1850,9 +1850,63 @@ body.light-mode .social-boxes.small .social-box:hover {
     .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 }
 
-/* Additional Polish */
-.projects-header {
-    text-align: left;
-    margin-bottom: 2rem;
+/* --- Cinematic Navigation Arrows --- */
+.projects-slider-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+}
+
+.projects-container {
+    overflow-x: auto;
+    display: flex;
+    align-items: center;
+    padding: 2rem 5%;
+    gap: 3rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; 
+}
+
+.projects-container::-webkit-scrollbar { display: none; }
+
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(168, 85, 247, 0.8); /* Solid color on mobile for visibility */
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 200; /* High z-index to stay above cards */
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    pointer-events: all;
+}
+
+.nav-arrow:hover {
+    background: var(--primary);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
+}
+
+.nav-arrow.left { left: 15px; }
+.nav-arrow.right { right: 15px; }
+
+@media screen and (max-width: 768px) {
+    .nav-arrow {
+        width: 55px;
+        height: 55px;
+        background: rgba(168, 85, 247, 0.9); /* Even more visible on small screens */
+    }
+    
+    .nav-arrow.left { left: 10px; }
+    .nav-arrow.right { right: 10px; }
 }
 

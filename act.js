@@ -266,4 +266,57 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // --- Cinematic Looping Arrow Engine ---
+    const projsContainer = document.querySelector('.projects-container');
+    const cards = document.querySelectorAll('.project-card');
+    const prevBtn = document.getElementById('prev-proj');
+    const nextBtn = document.getElementById('next-proj');
+    let currentIndex = 0;
+
+    if (projsContainer && cards.length > 0) {
+        const updateGallery = (index) => {
+            const targetCard = cards[index];
+            const scrollPos = targetCard.offsetLeft - projsContainer.offsetLeft;
+            
+            projsContainer.scrollTo({
+                left: scrollPos,
+                behavior: 'smooth'
+            });
+        };
+
+        // Next Button with Loop
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % cards.length;
+                updateGallery(currentIndex);
+            });
+        }
+
+        // Prev Button with Loop
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+                updateGallery(currentIndex);
+            });
+        }
+
+        // Scroll Tracker (Sync manual swipe with currentIndex)
+        projsContainer.addEventListener('scroll', () => {
+            let activeIndex = 0;
+            let minDistance = Infinity;
+
+            cards.forEach((card, index) => {
+                const cardCenter = card.offsetLeft - projsContainer.scrollLeft + (card.offsetWidth / 2);
+                const containerCenter = projsContainer.offsetWidth / 2;
+                const distance = Math.abs(cardCenter - containerCenter);
+
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    activeIndex = index;
+                }
+            });
+            currentIndex = activeIndex;
+        });
+    }
 });
