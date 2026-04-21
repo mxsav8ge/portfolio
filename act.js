@@ -206,4 +206,64 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // --- "Sentient" Hero (Mouse Parallax Engine) ---
+    const hero = document.querySelector('.hero');
+    let mouseX = 0, mouseY = 0;
+    let currentX = 0, currentY = 0;
+    const lerpAmount = 0.1; // Smoothness factor (lower = smoother/laggier)
+
+    if (hero) {
+        hero.addEventListener('mousemove', (e) => {
+            // Get mouse position relative to center of screen
+            const { clientX, clientY } = e;
+            const { innerWidth, innerHeight } = window;
+            
+            // Normalize current mouse pos to range [-50, 50]
+            mouseX = (clientX - innerWidth / 2) / (innerWidth / 2) * 50;
+            mouseY = (clientY - innerHeight / 2) / (innerHeight / 2) * 50;
+        });
+
+        const updateParallax = () => {
+            // Linear Interpolation (LERP) for buttery smooth motion
+            currentX += (mouseX - currentX) * lerpAmount;
+            currentY += (mouseY - currentY) * lerpAmount;
+
+            hero.style.setProperty('--mx', `${currentX}px`);
+            hero.style.setProperty('--my', `${currentY}px`);
+
+            requestAnimationFrame(updateParallax);
+        };
+
+        // Start the animation loop
+        updateParallax();
+    }
+    // --- Mobile Sidebar Toggle Engine ---
+    const menuToggle = document.getElementById('menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent immediate closing
+            menuToggle.classList.toggle('active');
+            mainNav.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mainNav.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                mainNav.classList.remove('active');
+            }
+        });
+    }
 });

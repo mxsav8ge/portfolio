@@ -22,10 +22,17 @@
     </div>
 
     <header class="main-header">
-        <a href="#home" class="logo">
-            <img src="assets/logo.png" alt="Logo">
-            <span>MC.Dev</span>
-        </a>
+        <div class="header-left">
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="#home" class="logo">
+                <img src="assets/logo.png" alt="Logo">
+                <span>MC.Dev</span>
+            </a>
+        </div>
 
         <nav class="main-nav">
             <ul class="nav-links">
@@ -232,25 +239,11 @@
 
     </main>
 
-    <!-- Project Section (Expanded Width) -->
+    <!-- Project Section (Horizontal Cinematic) -->
     <section id="projects" class="projects-section">
         <div class="container">
             <div class="projects-header">
                 <h2 class="section-title">Latest <span>Projects</span></h2>
-                <div class="projects-controls">
-                    <div class="search-wrapper">
-                        <i data-lucide="search"></i>
-                        <input type="text" id="project-search" placeholder="Search projects or stack...">
-                    </div>
-                    <div class="view-toggle">
-                        <button class="toggle-btn active" id="grid-view-btn" title="Grid View">
-                            <i data-lucide="layout-grid"></i>
-                        </button>
-                        <button class="toggle-btn" id="list-view-btn" title="List View">
-                            <i data-lucide="list"></i>
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -321,16 +314,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="pagination" id="projects-pagination">
-                <button class="page-btn prev" disabled><i data-lucide="chevron-left"></i></button>
-                <div class="page-numbers">
-                    <button class="page-num active">1</button>
-                </div>
-                <button class="page-btn next" disabled><i data-lucide="chevron-right"></i></button>
             </div>
         </div>
     </section>
