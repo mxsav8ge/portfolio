@@ -16,6 +16,11 @@
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
 
+    <!-- Scroll Progress -->
+    <div class="scroll-progress-container">
+        <div id="scroll-progress" class="scroll-progress-bar"></div>
+    </div>
+
     <header class="main-header">
         <a href="#home" class="logo">
             <img src="assets/logo.png" alt="Logo">
@@ -32,8 +37,12 @@
         </nav>
         <div class="header-actions">
             <div class="theme-switch-pill">
-                <input type="checkbox" id="mode-toggle">
-                <label for="mode-toggle" class="switch-button"></label>
+                <i data-lucide="sun" class="sun-icon"></i>
+                <div class="switch-wrapper">
+                    <input type="checkbox" id="mode-toggle">
+                    <label for="mode-toggle" class="switch-button"></label>
+                </div>
+                <i data-lucide="moon" class="moon-icon"></i>
             </div>
         </div>
     </header>
@@ -126,21 +135,38 @@
             </div>
             
             <div class="skills-grid">
-                <!-- Stacked Visuals -->
-                <div class="skills-visual-stack">
-                    <div class="stack-layer layer-3"><img src="assets/skillsimg.png" alt="Skills Layer 3"></div>
-                    <div class="stack-layer layer-2"><img src="assets/skillsimg.png" alt="Skills Layer 2"></div>
-                    <div class="stack-layer layer-1"><img src="assets/skillsimg.png" alt="Skills Main"></div>
+                <!-- Skills Hero Visual -->
+                <div class="skills-visual-container">
+                    <div class="skills-hero-card">
+                        <img src="assets/skillsimg.png" alt="Skills Visual" class="main-skill-img">
+                        <div class="visual-overlay"></div>
+                        
+                        <!-- Floating Badges -->
+                        <div class="floating-badge badge-figma">
+                            <i data-lucide="layout"></i>
+                            <span>Figma</span>
+                        </div>
+                        <div class="floating-badge badge-react">
+                            <i data-lucide="code-2"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="floating-badge badge-design">
+                            <i data-lucide="palette"></i>
+                            <span>UX Design</span>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Skill Cards -->
-                <div class="skills-content">
+                <!-- Skill Dashboard -->
+                <div class="skills-dashboard">
                     <!-- Designing Skills -->
                     <div class="skill-category-card">
                         <div class="card-head">
-                            <h3>Designing Skills</h3>
-                            <p class="subtitle">Improving Responsive Layouts</p>
-                            <div class="divider"></div>
+                            <div class="head-icon"><i data-lucide="pen-tool"></i></div>
+                            <div class="head-text">
+                                <h3>Creative Design</h3>
+                                <p class="subtitle">Visual Identity & Typography</p>
+                            </div>
                         </div>
                         <div class="skill-bars">
                             <div class="skill-bar-wrapper">
@@ -148,38 +174,33 @@
                                     <span>UI Design</span>
                                     <span class="pct">86%</span>
                                 </div>
-                                <div class="bar-bg"><div class="bar-fill" style="width: 86%;"></div></div>
+                                <div class="bar-bg"><div class="bar-fill" style="width: 86%; --bar-glow: #a855f7;"></div></div>
                             </div>
                             <div class="skill-bar-wrapper">
                                 <div class="skill-info">
                                     <span>Responsive Layouts</span>
                                     <span class="pct">67%</span>
                                 </div>
-                                <div class="bar-bg"><div class="bar-fill" style="width: 67%;"></div></div>
+                                <div class="bar-bg"><div class="bar-fill" style="width: 67%; --bar-glow: #ec4899;"></div></div>
                             </div>
                             <div class="skill-bar-wrapper">
                                 <div class="skill-info">
                                     <span>Typography</span>
                                     <span class="pct">95%</span>
                                 </div>
-                                <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
-                            </div>
-                            <div class="skill-bar-wrapper">
-                                <div class="skill-info">
-                                    <span>Color Palette</span>
-                                    <span class="pct">76%</span>
-                                </div>
-                                <div class="bar-bg"><div class="bar-fill" style="width: 76%;"></div></div>
+                                <div class="bar-bg"><div class="bar-fill" style="width: 95%; --bar-glow: #d946ef;"></div></div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Programming Skills -->
+                    <!-- Development Skills -->
                     <div class="skill-category-card">
                         <div class="card-head">
-                            <h3>UI/UX Expertise</h3>
-                            <p class="subtitle">Improving Responsive Layouts</p>
-                            <div class="divider"></div>
+                            <div class="head-icon"><i data-lucide="terminal"></i></div>
+                            <div class="head-text">
+                                <h3>UX Architecture</h3>
+                                <p class="subtitle">Interaction & User Research</p>
+                            </div>
                         </div>
                         <div class="skill-bars">
                             <div class="skill-bar-wrapper">
@@ -187,21 +208,21 @@
                                     <span>Wireframing</span>
                                     <span class="pct">79%</span>
                                 </div>
-                                <div class="bar-bg"><div class="bar-fill" style="width: 79%;"></div></div>
+                                <div class="bar-bg"><div class="bar-fill" style="width: 79%; --bar-glow: #6366f1;"></div></div>
                             </div>
                             <div class="skill-bar-wrapper">
                                 <div class="skill-info">
                                     <span>Interaction Design</span>
                                     <span class="pct">83%</span>
                                 </div>
-                                <div class="bar-bg"><div class="bar-fill" style="width: 83%;"></div></div>
+                                <div class="bar-bg"><div class="bar-fill" style="width: 83%; --bar-glow: #3b82f6;"></div></div>
                             </div>
                             <div class="skill-bar-wrapper">
                                 <div class="skill-info">
                                     <span>Usability Testing</span>
                                     <span class="pct">91%</span>
                                 </div>
-                                <div class="bar-bg"><div class="bar-fill" style="width: 91%;"></div></div>
+                                <div class="bar-bg"><div class="bar-fill" style="width: 91%; --bar-glow: #2dd4bf;"></div></div>
                             </div>
                         </div>
                     </div>
@@ -209,12 +230,34 @@
             </div>
         </section>
 
-        <!-- Project Section -->
-        <section id="projects" class="projects-section">
-            <h2 class="section-title">Latest <span>Projects</span></h2>
-            <div class="projects-grid">
+    </main>
+
+    <!-- Project Section (Expanded Width) -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <div class="projects-header">
+                <h2 class="section-title">Latest <span>Projects</span></h2>
+                <div class="projects-controls">
+                    <div class="search-wrapper">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="project-search" placeholder="Search projects or stack...">
+                    </div>
+                    <div class="view-toggle">
+                        <button class="toggle-btn active" id="grid-view-btn" title="Grid View">
+                            <i data-lucide="layout-grid"></i>
+                        </button>
+                        <button class="toggle-btn" id="list-view-btn" title="List View">
+                            <i data-lucide="list"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="projects-container">
+            <div class="projects-grid" id="projects-container">
                 <!-- Project 1 -->
-                <div class="project-card" style="--accent-color: #00f2fe;">
+                <div class="project-card" data-title="DynMovies" data-tags="UI Design, Streaming" style="--accent-color: #00f2fe;">
                     <div class="project-container">
                         <img src="assets/Dynmovies.png" alt="DynMovies Project" class="project-img">
                         <div class="project-overlay">
@@ -227,8 +270,8 @@
                                     <h3>DynMovies</h3>
                                     <p>Cinematic streaming with seamless navigation.</p>
                                 </div>
-                                <a href="#" class="project-btn" title="View Project">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                <a href="https://www.dynmovies.site/" class="project-btn" title="View Project" target="_blank">
+                                    <i data-lucide="arrow-right"></i>
                                 </a>
                             </div>
                         </div>
@@ -236,7 +279,7 @@
                 </div>
 
                 <!-- Project 2 -->
-                <div class="project-card" style="--accent-color: #f52af5;">
+                <div class="project-card" data-title="Ismeye Gallery" data-tags="Visual Art, Portfolio" style="--accent-color: #f52af5;">
                     <div class="project-container">
                         <img src="assets/Ismeye.png" alt="Ismeye Project" class="project-img">
                         <div class="project-overlay">
@@ -249,8 +292,8 @@
                                     <h3>Ismeye Gallery</h3>
                                     <p>Creator platform for visual art showcases.</p>
                                 </div>
-                                <a href="#" class="project-btn" title="View Project">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                <a href="https://www.ismeye.site/" class="project-btn" title="View Project" target="_blank">
+                                    <i data-lucide="arrow-right"></i>
                                 </a>
                             </div>
                         </div>
@@ -258,7 +301,7 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="project-card" style="--accent-color: #a855f7;">
+                <div class="project-card" data-title="Xoxo Social" data-tags="Social App, UX Design" style="--accent-color: #a855f7;">
                     <div class="project-container">
                         <img src="assets/xoxo.png" alt="Xoxo App" class="project-img">
                         <div class="project-overlay">
@@ -271,23 +314,36 @@
                                     <h3>Xoxo Social</h3>
                                     <p>Modern interactive landing experience.</p>
                                 </div>
-                                <a href="#" class="project-btn" title="View Project">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                <a href="https://www.xoxoxz.site/login" class="project-btn" title="View Project" target="_blank">
+                                    <i data-lucide="arrow-right"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+
+        <div class="container">
+            <div class="pagination" id="projects-pagination">
+                <button class="page-btn prev" disabled><i data-lucide="chevron-left"></i></button>
+                <div class="page-numbers">
+                    <button class="page-num active">1</button>
+                </div>
+                <button class="page-btn next" disabled><i data-lucide="chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
 
         <!-- Contact Section -->
         <section id="contact" class="contact-section">
             <h2 class="section-title">Get In <span>Touch</span></h2>
             <div class="contact-wrapper">
-                <!-- Contact Form -->
-                <div>
-                    <form class="contact-form">
+                <!-- Contact Form Card -->
+                <div class="contact-form-card">
+                    <form class="contact-form" id="contact-form">
                         <div class="form-group">
                             <label>Full name<span class="required">*</span>:</label>
                             <input type="text" placeholder="Enter your Fullname">
@@ -304,7 +360,7 @@
                             <label>Message<span class="required">*</span>:</label>
                             <textarea rows="8" placeholder="Enter your message"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-solid btn-send">
+                        <button type="submit" class="btn btn-solid btn-send" style="width: 100%; margin-top: 1rem;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" style="margin-right: 10px;">
@@ -345,7 +401,7 @@
                                 <p>+63 929 657 576</p>
                             </div>
                         </div>
-                        <div class="info-item">
+                        <a href="https://www.facebook.com/onenonlymica" class="info-item" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round">
@@ -355,8 +411,8 @@
                                 <span class="label">Facebook</span>
                                 <p>Onenonlymica</p>
                             </div>
-                        </div>
-                        <div class="info-item">
+                        </a>
+                        <a href="https://www.instagram.com/whatdyknw/" class="info-item" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round">
@@ -368,7 +424,7 @@
                                 <span class="label">Instagram</span>
                                 <p>@whatdyknw</p>
                             </div>
-                        </div>
+                        </a>
                     </div>
 
                     <div class="info-card location-card">
@@ -406,20 +462,20 @@
                     skills and projects here.
                 </p>
                 <div class="social-boxes small">
-                    <a href="#" class="social-box" title="Phone">
+                    <a href="tel:+63929657576" class="social-box" title="Phone">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path
                                 d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.11-2.11a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                         </svg>
                     </a>
-                    <a href="#" class="social-box" title="Facebook">
+                    <a href="https://www.facebook.com/onenonlymica" class="social-box" title="Facebook" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                         </svg>
                     </a>
-                    <a href="#" class="social-box" title="Instagram">
+                    <a href="https://www.instagram.com/whatdyknw/" class="social-box" title="Instagram" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -479,6 +535,16 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top">
+        <i data-lucide="arrow-up"></i>
+    </button>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="act.js"></script>
 </body>
 
