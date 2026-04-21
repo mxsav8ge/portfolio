@@ -5,43 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mica Joy Labis | Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
     <header class="main-header">
-        <div class="logo">
-            <img src="pngs/logo.png" alt="Logo">
+        <a href="#home" class="logo">
+            <i data-lucide="terminal"></i>
             <span>MC.Dev</span>
-        </div>
+        </a>
         
         <nav class="main-nav">
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+        </nav>
+        <div class="header-actions">
             <div class="theme-switcher">
                 <input type="checkbox" id="mode-toggle">
                 <label for="mode-toggle"></label>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <div class="content-wrapper">
+    <main class="container">
+        <!-- Landingpage / Hero -->
         <section id="home" class="hero">
             <p class="greeting">Hello, I'm</p>
-            <h1 class="main-name">Mica Joy Labis</h1>
+            <h1 class="main-name gradient-text">Mica Joy Labis</h1>
             <p class="job-title">front-end web designer</p>
             
             <div class="hero-actions">
-                <button class="btn btn-solid">About</button>
-                <button class="btn btn-outline">Contact</button>
+                <a href="#about" class="btn btn-solid">About Me</a>
+                <a href="#contact" class="btn btn-outline">Let's Talk</a>
             </div>
-            <p class="placeholder-text">to be edited</p>
         </section>
 
-        <section class="services-bar">
+        <!-- Services Bar -->
+        <section class="services-bar glass">
             <ul class="services-list">
                 <li>App <span>Design</span></li>
                 <li>Logo <span>Design</span></li>
@@ -50,52 +56,159 @@
             </ul>
         </section>
 
-        <section id="about" class="section-container">
+        <!-- About Section -->
+        <section id="about" class="about-section">
             <div class="about-grid">
                 <div class="about-text">
-                    <h2 class="about-title">About <span>the operator</span></h2>
+                    <h2 class="section-title">About <span>the operator</span></h2>
                     <p class="about-description">
-                        Mica Joy Labis<br>
-                        2nd year Bachelor of Science in Information Technology (BSIT) student with a growing interest in web design and development.My academic journey has sparked a passion for creating user-friendly, visually appealing websites that combine both creativity and functionality.
+                        I'm a 2nd year Bachelor of Science in Information Technology (BSIT) student with a deep passion for web design and development. My journey is driven by the desire to create user-centric, visually stunning websites that blend creativity with flawless functionality.
                     </p>
 
                     <div class="info-cards">
                         <div class="glass-card">
                             <div class="card-header">
-                                <span class="icon">🌐</span>
+                                <i data-lucide="palette" class="icon"></i>
                                 <h3>Hobbies</h3>
                             </div>
                             <ul>
-                                <li>Exploring design trends</li>
-                                <li>Watching Movies</li>
+                                <li>Exploring new web design trends</li>
+                                <li>Watching Movies & Anime</li>
+                                <li>Reading & Marketing</li>
                             </ul>
                         </div>
                         <div class="glass-card">
                             <div class="card-header">
-                                <span class="icon">🛠️</span>
-                                <h3>Skills</h3>
+                                <i data-lucide="zap" class="icon"></i>
+                                <h3>Interests</h3>
                             </div>
                             <ul>
-                                <li>Website Building</li>
-                                <li>Building Bots</li>
+                                <li>Graphic Design</li>
+                                <li>UI/UX Research</li>
+                                <li>Interactive Prototyping</li>
                             </ul>
                         </div>
                     </div>
-                    <button class="btn btn-solid">Projects</button>
+                    <a href="#projects" class="btn btn-solid">View Projects</a>
                 </div>
 
                 <div class="about-visual">
                     <div class="mockup-wrapper">
-                        <img src="desktop-preview.png" class="mockup-desktop">
-                        <img src="mobile-preview.png" class="mockup-mobile">
+                        <img src="assets/monitor&pc.png" alt="Desktop Mockup">
                     </div>
                 </div>
             </div>
         </section>
 
-        <a href="#home" class="back-to-top">Back to top <span>^</span></a>
-    </div>
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section">
+            <h2 class="section-title">My <span>Skills</span></h2>
+            <div class="skills-grid">
+                <div class="skills-image">
+                    <img src="assets/skillsimg.png" alt="Skills Illustration">
+                </div>
+                <div class="skills-container">
+                    <div class="skill-card">
+                        <h3>Designing Skills</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">UI Design</div>
+                            <div class="skill-item">Responsive Layouts</div>
+                            <div class="skill-item">Typography</div>
+                            <div class="skill-item">Color Palette</div>
+                            <div class="skill-item">UX Principles</div>
+                            <div class="skill-item">HTML/CSS Styling</div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <h3>UI/UX Expertise</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">Wireframing</div>
+                            <div class="skill-item">Interaction Design</div>
+                            <div class="skill-item">Usability Testing</div>
+                            <div class="skill-item">Accessibility</div>
+                            <div class="skill-item">User Research</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Section -->
+        <section id="projects" class="projects-section">
+            <h2 class="section-title">Latest <span>Projects</span></h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="assets/Dynmovies.png" alt="DynMovies Project" class="project-img">
+                    <div class="project-info">
+                        <h3>DynMovies</h3>
+                        <p>A cinematic streaming experience focusing on clean UI and seamless navigation.</p>
+                        <a href="#" class="btn btn-outline">Explore</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="assets/Ismeye.png" alt="Ismeye Project" class="project-img">
+                    <div class="project-info">
+                        <h3>Ismeye</h3>
+                        <p>A visual gallery platform designed for creators to showcase their art portfolio.</p>
+                        <a href="#" class="btn btn-outline">Explore</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="assets/xoxo.png" alt="Xoxo App" class="project-img">
+                    <div class="project-info">
+                        <h3>Xoxo Social</h3>
+                        <p>Modern social landing page with interactive elements and vibrant aesthetics.</p>
+                        <a href="#" class="btn btn-outline">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer / Contact Section -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <h2 class="section-title">Get In <span>Touch</span></h2>
+            <div class="contact-wrapper">
+                <div class="contact-form">
+                    <form action="#">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="example@gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea rows="5" placeholder="Your message here..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-solid">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="socials-card">
+                        <h3>Social Connections</h3>
+                        <a href="#" class="social-item"><i data-lucide="mail"></i> example@gmail.com</a>
+                        <a href="#" class="social-item"><i data-lucide="phone"></i> +63 929 657 576</a>
+                        <a href="#" class="social-item"><i data-lucide="facebook"></i> Facebook/mcdev</a>
+                        <a href="#" class="social-item"><i data-lucide="instagram"></i> Instagram/mcdev</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bottom-bar">
+                <div class="logo">
+                    <i data-lucide="terminal"></i>
+                    <span>MC.Dev</span>
+                </div>
+                <p>&copy; 2024 Mica Joy Labis. All rights reserved.</p>
+                <a href="#home" class="btn btn-outline" style="padding: 0.5rem 1.5rem">^</a>
+            </div>
+        </div>
+    </footer>
 
     <script src="act.js"></script>
 </body>
-</html>
+</html>
