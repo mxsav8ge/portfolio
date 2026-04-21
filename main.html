@@ -1,51 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mica Joy Labis | Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
 
     <header class="main-header">
         <a href="#home" class="logo">
-            <i data-lucide="terminal"></i>
+            <img src="assets/logo.png" alt="Logo">
             <span>MC.Dev</span>
         </a>
-        
+
         <nav class="main-nav">
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         <div class="header-actions">
-            <div class="theme-switcher">
+            <div class="theme-switch-pill">
                 <input type="checkbox" id="mode-toggle">
-                <label for="mode-toggle"></label>
+                <label for="mode-toggle" class="switch-button"></label>
             </div>
         </div>
     </header>
 
-    <main class="container">
-        <!-- Landingpage / Hero -->
-        <section id="home" class="hero">
-            <p class="greeting">Hello, I'm</p>
-            <h1 class="main-name gradient-text">Mica Joy Labis</h1>
-            <p class="job-title">front-end web designer</p>
-            
-            <div class="hero-actions">
-                <a href="#about" class="btn btn-solid">About Me</a>
-                <a href="#contact" class="btn btn-outline">Let's Talk</a>
+    <!-- Hero Section (Full Width) -->
+    <section id="home" class="hero">
+        <div class="hero-bg-outer">
+            <div class="hero-bg-slideshow">
+                <div class="slide-img" style="background-image: url('assets/Hero1.png');"></div>
+                <div class="slide-img" style="background-image: url('assets/Hero2.png');"></div>
             </div>
-        </section>
+            <div class="hero-overlay"></div>
+        </div>
 
+        <div class="container">
+            <div class="hero-content">
+                <span class="greeting">Hello, I'm</span>
+                <h1 class="main-name gradient-text">Mica Joy <span>Labis</span></h1>
+                <p class="role">front-end web designer</p>
+                <div class="hero-btns">
+                    <a href="#about" class="btn btn-solid">About</a>
+                    <a href="#contact" class="btn btn-outline">Contact</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
         <!-- Services Bar -->
         <section class="services-bar glass">
             <ul class="services-list">
@@ -62,7 +78,9 @@
                 <div class="about-text">
                     <h2 class="section-title">About <span>the operator</span></h2>
                     <p class="about-description">
-                        I'm a 2nd year Bachelor of Science in Information Technology (BSIT) student with a deep passion for web design and development. My journey is driven by the desire to create user-centric, visually stunning websites that blend creativity with flawless functionality.
+                        I'm a 2nd year Bachelor of Science in Information Technology (BSIT) student with a deep passion
+                        for web design and development. My journey is driven by the desire to create user-centric,
+                        visually stunning websites that blend creativity with flawless functionality.
                     </p>
 
                     <div class="info-cards">
@@ -102,31 +120,89 @@
 
         <!-- Skills Section -->
         <section id="skills" class="skills-section">
-            <h2 class="section-title">My <span>Skills</span></h2>
+            <div class="skills-header">
+                <h2 class="skills-title"><span class="highlight">My</span> Skills</h2>
+                <div class="title-underline"></div>
+            </div>
+            
             <div class="skills-grid">
-                <div class="skills-image">
-                    <img src="assets/skillsimg.png" alt="Skills Illustration">
+                <!-- Stacked Visuals -->
+                <div class="skills-visual-stack">
+                    <div class="stack-layer layer-3"><img src="assets/skillsimg.png" alt="Skills Layer 3"></div>
+                    <div class="stack-layer layer-2"><img src="assets/skillsimg.png" alt="Skills Layer 2"></div>
+                    <div class="stack-layer layer-1"><img src="assets/skillsimg.png" alt="Skills Main"></div>
                 </div>
-                <div class="skills-container">
-                    <div class="skill-card">
-                        <h3>Designing Skills</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">UI Design</div>
-                            <div class="skill-item">Responsive Layouts</div>
-                            <div class="skill-item">Typography</div>
-                            <div class="skill-item">Color Palette</div>
-                            <div class="skill-item">UX Principles</div>
-                            <div class="skill-item">HTML/CSS Styling</div>
+
+                <!-- Skill Cards -->
+                <div class="skills-content">
+                    <!-- Designing Skills -->
+                    <div class="skill-category-card">
+                        <div class="card-head">
+                            <h3>Designing Skills</h3>
+                            <p class="subtitle">Improving Responsive Layouts</p>
+                            <div class="divider"></div>
+                        </div>
+                        <div class="skill-bars">
+                            <div class="skill-bar-wrapper">
+                                <div class="skill-info">
+                                    <span>UI Design</span>
+                                    <span class="pct">86%</span>
+                                </div>
+                                <div class="bar-bg"><div class="bar-fill" style="width: 86%;"></div></div>
+                            </div>
+                            <div class="skill-bar-wrapper">
+                                <div class="skill-info">
+                                    <span>Responsive Layouts</span>
+                                    <span class="pct">67%</span>
+                                </div>
+                                <div class="bar-bg"><div class="bar-fill" style="width: 67%;"></div></div>
+                            </div>
+                            <div class="skill-bar-wrapper">
+                                <div class="skill-info">
+                                    <span>Typography</span>
+                                    <span class="pct">95%</span>
+                                </div>
+                                <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
+                            </div>
+                            <div class="skill-bar-wrapper">
+                                <div class="skill-info">
+                                    <span>Color Palette</span>
+                                    <span class="pct">76%</span>
+                                </div>
+                                <div class="bar-bg"><div class="bar-fill" style="width: 76%;"></div></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="skill-card">
-                        <h3>UI/UX Expertise</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">Wireframing</div>
-                            <div class="skill-item">Interaction Design</div>
-                            <div class="skill-item">Usability Testing</div>
-                            <div class="skill-item">Accessibility</div>
-                            <div class="skill-item">User Research</div>
+
+                    <!-- Programming Skills -->
+                    <div class="skill-category-card">
+                        <div class="card-head">
+                            <h3>UI/UX Expertise</h3>
+                            <p class="subtitle">Improving Responsive Layouts</p>
+                            <div class="divider"></div>
+                        </div>
+                        <div class="skill-bars">
+                            <div class="skill-bar-wrapper">
+                                <div class="skill-info">
+                                    <span>Wireframing</span>
+                                    <span class="pct">79%</span>
+                                </div>
+                                <div class="bar-bg"><div class="bar-fill" style="width: 79%;"></div></div>
+                            </div>
+                            <div class="skill-bar-wrapper">
+                                <div class="skill-info">
+                                    <span>Interaction Design</span>
+                                    <span class="pct">83%</span>
+                                </div>
+                                <div class="bar-bg"><div class="bar-fill" style="width: 83%;"></div></div>
+                            </div>
+                            <div class="skill-bar-wrapper">
+                                <div class="skill-info">
+                                    <span>Usability Testing</span>
+                                    <span class="pct">91%</span>
+                                </div>
+                                <div class="bar-bg"><div class="bar-fill" style="width: 91%;"></div></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -137,78 +213,273 @@
         <section id="projects" class="projects-section">
             <h2 class="section-title">Latest <span>Projects</span></h2>
             <div class="projects-grid">
-                <div class="project-card">
-                    <img src="assets/Dynmovies.png" alt="DynMovies Project" class="project-img">
-                    <div class="project-info">
-                        <h3>DynMovies</h3>
-                        <p>A cinematic streaming experience focusing on clean UI and seamless navigation.</p>
-                        <a href="#" class="btn btn-outline">Explore</a>
+                <!-- Project 1 -->
+                <div class="project-card" style="--accent-color: #00f2fe;">
+                    <div class="project-container">
+                        <img src="assets/Dynmovies.png" alt="DynMovies Project" class="project-img">
+                        <div class="project-overlay">
+                            <div class="project-tags">
+                                <span class="tag">UI Design</span>
+                                <span class="tag">Streaming</span>
+                            </div>
+                            <div class="project-info-glass">
+                                <div class="info-main">
+                                    <h3>DynMovies</h3>
+                                    <p>Cinematic streaming with seamless navigation.</p>
+                                </div>
+                                <a href="#" class="project-btn" title="View Project">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="project-card">
-                    <img src="assets/Ismeye.png" alt="Ismeye Project" class="project-img">
-                    <div class="project-info">
-                        <h3>Ismeye</h3>
-                        <p>A visual gallery platform designed for creators to showcase their art portfolio.</p>
-                        <a href="#" class="btn btn-outline">Explore</a>
+
+                <!-- Project 2 -->
+                <div class="project-card" style="--accent-color: #f52af5;">
+                    <div class="project-container">
+                        <img src="assets/Ismeye.png" alt="Ismeye Project" class="project-img">
+                        <div class="project-overlay">
+                            <div class="project-tags">
+                                <span class="tag">Visual Art</span>
+                                <span class="tag">Portfolio</span>
+                            </div>
+                            <div class="project-info-glass">
+                                <div class="info-main">
+                                    <h3>Ismeye Gallery</h3>
+                                    <p>Creator platform for visual art showcases.</p>
+                                </div>
+                                <a href="#" class="project-btn" title="View Project">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="project-card">
-                    <img src="assets/xoxo.png" alt="Xoxo App" class="project-img">
-                    <div class="project-info">
-                        <h3>Xoxo Social</h3>
-                        <p>Modern social landing page with interactive elements and vibrant aesthetics.</p>
-                        <a href="#" class="btn btn-outline">Explore</a>
+
+                <!-- Project 3 -->
+                <div class="project-card" style="--accent-color: #a855f7;">
+                    <div class="project-container">
+                        <img src="assets/xoxo.png" alt="Xoxo App" class="project-img">
+                        <div class="project-overlay">
+                            <div class="project-tags">
+                                <span class="tag">Social App</span>
+                                <span class="tag">UX Design</span>
+                            </div>
+                            <div class="project-info-glass">
+                                <div class="info-main">
+                                    <h3>Xoxo Social</h3>
+                                    <p>Modern interactive landing experience.</p>
+                                </div>
+                                <a href="#" class="project-btn" title="View Project">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <h2 class="section-title">Get In <span>Touch</span></h2>
+            <div class="contact-wrapper">
+                <!-- Contact Form -->
+                <div>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label>Full name<span class="required">*</span>:</label>
+                            <input type="text" placeholder="Enter your Fullname">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address<span class="required">*</span>:</label>
+                            <input type="email" placeholder="example@gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Number (Optional):</label>
+                            <input type="text" placeholder="+6391 234 5678">
+                        </div>
+                        <div class="form-group">
+                            <label>Message<span class="required">*</span>:</label>
+                            <textarea rows="8" placeholder="Enter your message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-solid btn-send">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" style="margin-right: 10px;">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info Cards -->
+                <div class="contact-cards-container">
+                    <div class="info-card socials-card">
+                        <h3>Socials</h3>
+                        <div class="card-line"></div>
+                        <div class="info-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="m22 2-7 20-4-9-9-4Z" />
+                                <path d="M22 2 11 13" />
+                            </svg>
+                            <div class="info-content">
+                                <span class="label">Email</span>
+                                <p>Example@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.11-2.11a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                            <div class="info-content">
+                                <span class="label">Phone number</span>
+                                <p>+63 929 657 576</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                            </svg>
+                            <div class="info-content">
+                                <span class="label">Facebook</span>
+                                <p>Onenonlymica</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                            </svg>
+                            <div class="info-content">
+                                <span class="label">Instagram</span>
+                                <p>@whatdyknw</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-card location-card">
+                        <div class="info-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            <div class="info-content">
+                                <span class="label">Location</span>
+                                <p>Mindanao, Philippines</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer / Contact Section -->
-    <footer id="contact" class="footer">
-        <div class="container">
-            <h2 class="section-title">Get In <span>Touch</span></h2>
-            <div class="contact-wrapper">
-                <div class="contact-form">
-                    <form action="#">
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" placeholder="Enter your full name">
-                        </div>
-                        <div class="form-group">
-                            <label>Email Address</label>
-                            <input type="email" placeholder="example@gmail.com">
-                        </div>
-                        <div class="form-group">
-                            <label>Message</label>
-                            <textarea rows="5" placeholder="Your message here..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-solid">Send Message</button>
-                    </form>
+    <!-- Footer Section -->
+    <footer id="footer" class="footer">
+        <div class="container footer-grid">
+            <!-- Brand Section -->
+            <div class="footer-brand">
+                <div class="brand-top">
+                    <div class="logo">
+                        <img src="assets/logo.png" alt="Logo">
+                        <span>MC.Dev</span>
+                    </div>
                 </div>
-                <div class="contact-info">
-                    <div class="socials-card">
-                        <h3>Social Connections</h3>
-                        <a href="#" class="social-item"><i data-lucide="mail"></i> example@gmail.com</a>
-                        <a href="#" class="social-item"><i data-lucide="phone"></i> +63 929 657 576</a>
-                        <a href="#" class="social-item"><i data-lucide="facebook"></i> Facebook/mcdev</a>
-                        <a href="#" class="social-item"><i data-lucide="instagram"></i> Instagram/mcdev</a>
+                <p class="brand-bio small">
+                    MC.dev is my personal e-portfolio showcasing my journey as a 2nd-year BSIT student. I document my
+                    skills and projects here.
+                </p>
+                <div class="social-boxes small">
+                    <a href="#" class="social-box" title="Phone">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.11-2.11a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="social-box" title="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="social-box" title="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Card Section -->
+            <div class="footer-contact-card mini">
+                <div class="contact-card-inner">
+                    <div class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="20" height="16" x="2" y="4" rx="2" />
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                        </svg>
+                        <div class="contact-detail">
+                            <span class="label">Email</span>
+                            <p>Example@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.11-2.11a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg>
+                        <div class="contact-detail">
+                            <span class="label">Phone number</span>
+                            <p>+63 929 657 576</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        <div class="contact-detail">
+                            <span class="label">Location</span>
+                            <p>Mindanao, Philippines</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="bottom-bar">
-                <div class="logo">
-                    <i data-lucide="terminal"></i>
-                    <span>MC.Dev</span>
-                </div>
-                <p>&copy; 2024 Mica Joy Labis. All rights reserved.</p>
-                <a href="#home" class="btn btn-outline" style="padding: 0.5rem 1.5rem">^</a>
+        </div>
+
+        <div class="container footer-bottom-bar">
+            <p>&copy; 2026 MC.Dev.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
             </div>
         </div>
     </footer>
 
     <script src="act.js"></script>
 </body>
-</html>
+
+</html>
