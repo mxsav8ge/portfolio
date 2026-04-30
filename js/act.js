@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Global Scroll HUD (Progress Bar & Back to Top) ---
     const progressBar = document.getElementById('scroll-progress');
-    const backToTopBtn = document.getElementById('back-to-top');
+
 
     window.addEventListener('scroll', () => {
         // 1. Update Progress Bar
@@ -189,23 +189,10 @@ document.addEventListener('DOMContentLoaded', () => {
             progressBar.style.width = scrolled + '%';
         }
 
-        // 2. Back to Top Visibility
-        if (windowScroll > 500) {
-            backToTopBtn.classList.add('show');
-        } else {
-            backToTopBtn.classList.remove('show');
-        }
+
     });
 
-    // 3. Back to Top Click
-    if (backToTopBtn) {
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
+
 
     // --- "Sentient" Hero (Mouse Parallax Engine) ---
     const hero = document.querySelector('.hero');
@@ -318,5 +305,66 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             currentIndex = activeIndex;
         });
+    }
+    // --- Particle System Engine ---
+    const canvas = document.getElementById('particle-canvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const particleCount = 60;
+
+        const resize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2 + 1;
+                this.alpha = Math.random() * 0.5 + 0.1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(168, 85, 247, ${this.alpha})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        const animate = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        };
+
+        animate();
     }
 });
