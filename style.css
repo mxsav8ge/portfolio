@@ -78,7 +78,7 @@ body {
 }
 
 .gradient-text {
-    background: linear-gradient(90deg, #ffffff 40%, var(--primary) 100%);
+    background: linear-gradient(90deg, #ffffff 20%, var(--primary) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -350,6 +350,11 @@ input:checked + .switch-button:before {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
+}
+
+.h-descrip {
+    text-align: justify;
+    font-family: Nexa;
 }
 
 .hero-btns {
@@ -675,6 +680,7 @@ input:checked + .switch-button:before {
 
 .skill-info .pct {
     color: var(--primary);
+    display: none;
 }
 
 .bar-bg {
@@ -684,6 +690,7 @@ input:checked + .switch-button:before {
     overflow: hidden;
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    display: none;
 }
 
 .bar-fill {
@@ -1440,6 +1447,14 @@ body.light-mode .contact-form input:focus,
 body.light-mode .contact-form textarea:focus {
     background: #ffffff;
     border-color: var(--primary);
+}
+
+body.light-mode .btn-outline {
+    color: #1e293b;
+}
+
+body.light-mode .btn-outline:hover {
+    color: white;
 }
 
 /* Specific Component Refinements */
