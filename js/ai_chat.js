@@ -6,11 +6,50 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatInput = document.getElementById('chat-input');
     const chatMessages = document.getElementById('chat-messages');
 
+    const chatTranslations = {
+        en: {
+            welcome: "Hi there! 👋 I'm your AI assistant. Ask me anything about MC.Dev's portfolio!",
+            placeholder: "Ask me about skills, resume...",
+            resume_btn: "View My Resume",
+            error: "Im so sorry i still cant understand that, please ask another question or ask about my resume, about me, my skills and contanct",
+            responses: {
+                hi: "I'm a 2nd year Bachelor of Science in Information Technology (BSIT) student with a deep passion for web design and development. What can i help you? feel free to ask my contacts, resume, experience, skills, education",
+                praise: "Thank you! If you have more questions about me feel free to ask, like about me, contacts, skills, education, or experience.",
+                thanks: "You're welcome! If you have more questions, feel free to ask.",
+                skills: "I specialize in UI/UX Design, Front-End Development (HTML/CSS/JS), and Responsive Design. I'm also proficient in Figma and React!",
+                projects: "You can view my latest work in the Projects section, including DynMovies, Ismeye Gallery, and Xoxo Social.",
+                contact: "Feel free to reach out via the contact form below or email me at Example@gmail.com. I'd love to hear from you!",
+                about: "I'm Mica Joy Labis, also known as MC.Dev. I'm a front-end designer focused on creating intuitive and beautiful digital experiences.",
+                resume: "I'm a BSIT student at Opol Community College with experience in freelance front-end development and UI/UX design."
+            }
+        },
+        bi: {
+            welcome: "Halo! 👋 Ako ang imong AI assistant. Pangutana bisan unsa bahin sa portfolio ni MC.Dev!",
+            placeholder: "Pangutana bahin sa kahanas, resume...",
+            resume_btn: "Tan-awa ang Resume",
+            error: "Pasensya na, wala ko kasabot niana. Palihog pangutana pag-usab bahin sa akong resume, mahitungod kanako, akong kahanas, o kontak.",
+            responses: {
+                hi: "Usa ako ka 2nd year nga estudyante sa BSIT nga adunay lawom nga kadasig sa web design ug development. Unsay akong ikatabang? Mahimo kang mangutana bahin sa akong kontak, resume, kasinatian, kahanas, o edukasyon.",
+                praise: "Salamat kaayo! Kung naa pa kay mga pangutana bahin kanako, ayaw pagpanuko sa pagpangutana, sama sa mahitungod kanako, kontak, kahanas, edukasyon, o kasinatian.",
+                thanks: "Walay sapayan! Kung naa pa kay mga pangutana, ayaw pagpanuko sa pagpangutana.",
+                skills: "Nag-specialize ko sa UI/UX Design, Front-End Development (HTML/CSS/JS), ug Responsive Design. Hanas usab ko sa Figma ug React!",
+                projects: "Mahimo nimong tan-awon ang akong pinakabag-o nga trabaho sa seksyon sa mga Proyekto, lakip ang DynMovies, Ismeye Gallery, ug Xoxo Social.",
+                contact: "Mobati nga gawasnon sa pagkontak kanako pinaagi sa contact form sa ubos o email kanako sa Example@gmail.com. Ganahan ko makadungog gikan kanimo!",
+                about: "Ako si Mica Joy Labis, nailhan usab nga MC.Dev. Usa ako ka front-end designer nga naka-focus sa paghimo og intuitive ug nindot nga mga digital experience.",
+                resume: "Usa ako ka estudyante sa BSIT sa Opol Community College nga adunay kasinatian sa freelance front-end development ug UI/UX design."
+            }
+        }
+    };
+
+    const getCurrentLang = () => localStorage.getItem('language') || 'en';
+
     // Toggle Chat Window
     launcher.addEventListener('click', () => {
         chatWindow.classList.toggle('active');
         if (chatWindow.classList.contains('active')) {
             chatInput.focus();
+            const lang = getCurrentLang();
+            chatInput.placeholder = chatTranslations[lang].placeholder;
         }
     });
 
@@ -28,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const addMessage = (text, sender) => {
         const msgDiv = document.createElement('div');
         msgDiv.className = `message ${sender}`;
-        msgDiv.textContent = text;
+        msgDiv.innerHTML = text;
         chatMessages.appendChild(msgDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     };
@@ -50,6 +89,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const text = chatInput.value.trim();
         if (!text) return;
 
+        const lang = getCurrentLang();
+        const t = chatTranslations[lang];
+
         // User Message
         addMessage(text, 'user');
         chatInput.value = '';
@@ -64,27 +106,40 @@ document.addEventListener('DOMContentLoaded', () => {
             const input = text.toLowerCase();
             let response = "";
 
-            if (input.includes('hello') || input.includes('hi')) {
-                response = "I'm a 2nd year Bachelor of Science in Information Technology (BSIT) student with a deep passion for web design and development.";
+            if (input.includes('hello') || input.includes('hi') || input.includes('halo') || input.includes('kumusta')) {
+                response = `${t.responses.hi} <br><br> <button class="btn-chat-resume">${t.resume_btn}</button>`;
             } else if (input.includes('nice') || input.includes('good job') || input.includes('goodjob') || input.includes('great') || input.includes('amazing') || input.includes('pinupuri') || input.includes('wow')) {
-                response = "Thank you! If you have more questions about me feel free to ask, like about me, contacts, skills, education, or experience.";
-            } else if (input.includes('skill')) {
-                response = "I specialize in UI/UX Design, Front-End Development (HTML/CSS/JS), and Responsive Design. I'm also proficient in Figma and React!";
-            } else if (input.includes('project')) {
-                response = "You can view my latest work in the Projects section, including DynMovies, Ismeye Gallery, and Xoxo Social.";
-            } else if (input.includes('contact') || input.includes('email')) {
-                response = "Feel free to reach out via the contact form below or email me at Example@gmail.com. I'd love to hear from you!";
-            } else if (input.includes('about') || input.includes('who are you')) {
-                response = "I'm Mica Joy Labis, also known as MC.Dev. I'm a front-end designer focused on creating intuitive and beautiful digital experiences.";
-            } else if (input.includes('resume') || input.includes('experience') || input.includes('education') || input.includes('attainment')) {
-                response = "I'm a BSIT student at Opol Community College with experience in freelance front-end development and UI/UX design. Check out my Education and Experience sections for details!";
+                response = t.responses.praise;
+            } else if (input.includes('thank you') || input.includes('thanks') || input.includes('salamat')) {
+                response = t.responses.thanks;
+            } else if (input.includes('skill') || input.includes('kahanas')) {
+                response = t.responses.skills;
+            } else if (input.includes('project') || input.includes('proyekto')) {
+                response = t.responses.projects;
+            } else if (input.includes('contact') || input.includes('email') || input.includes('kontak')) {
+                response = t.responses.contact;
+            } else if (input.includes('about') || input.includes('who are you') || input.includes('mahitungod')) {
+                response = t.responses.about;
+            } else if (input.includes('resume') || input.includes('experience') || input.includes('education') || input.includes('kasinatian')) {
+                response = `${t.responses.resume} <br><br> <button class="btn-chat-resume">${t.resume_btn}</button>`;
             } else {
-                response = "Im so sorry i still cant understand that, please ask another question or ask about my resume, about me, my skills and contanct";
+                response = t.error;
             }
             
             addMessage(response, 'ai');
         }, 1500);
     };
+
+    // Handle clicks on dynamically added buttons in chat
+    chatMessages.addEventListener('click', (e) => {
+        if (e.target.classList.contains('btn-chat-resume')) {
+            const resumeModal = document.getElementById('resume-modal');
+            if (resumeModal) {
+                resumeModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+    });
 
     sendBtn.addEventListener('click', handleChat);
     chatInput.addEventListener('keypress', (e) => {
@@ -93,6 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial Message
     setTimeout(() => {
-        addMessage("Hi there! 👋 I'm your AI assistant. Ask me anything about MC.Dev's portfolio!", "ai");
+        const lang = getCurrentLang();
+        addMessage(chatTranslations[lang].welcome, "ai");
     }, 1000);
 });

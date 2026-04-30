@@ -70,6 +70,13 @@ body {
     color: var(--text-main);
     overflow-x: hidden;
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
 }
 
 /* Utility Classes */
@@ -460,9 +467,10 @@ input:checked + .switch-button:before {
 
 .main-name {
     font-size: clamp(4rem, 10vw, 8rem);
-    line-height: 1;
-    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
     font-weight: 800;
+    padding-bottom: 0.1em;
 }
 
 .main-name span {
@@ -498,6 +506,167 @@ input:checked + .switch-button:before {
 .hero-btns {
     display: flex;
     gap: 2rem;
+}
+
+/* Resume Button */
+.btn-resume {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: var(--transition);
+    text-decoration: none;
+    font-family: inherit;
+}
+
+.btn-resume svg { transition: var(--transition); }
+
+.btn-resume:hover {
+    background: var(--primary);
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+}
+
+.btn-resume:hover svg { transform: translateY(-2px); }
+
+/* Resume Modal */
+.resume-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 8000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.resume-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.resume-modal {
+    width: 90%;
+    max-width: 900px;
+    height: 85vh;
+    background: var(--glass-bg);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9) translateY(30px);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.resume-modal-overlay.active .resume-modal {
+    transform: scale(1) translateY(0);
+}
+
+.resume-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--glass-border);
+    flex-shrink: 0;
+}
+
+.resume-modal-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.resume-modal-header h3 svg { color: var(--primary); }
+
+.resume-modal-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.5rem !important;
+    font-size: 0.85rem !important;
+    border-radius: 50px;
+}
+
+.btn-download:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.resume-modal-close {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.resume-modal-close:hover {
+    background: #ef4444;
+    border-color: #ef4444;
+    transform: rotate(90deg);
+}
+
+.resume-modal-body {
+    flex: 1;
+    overflow: hidden;
+    background: #1a1a2e;
+}
+
+.resume-modal-body iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Light mode adaptations */
+body.light-mode .resume-modal { background: white; }
+body.light-mode .resume-modal-header { border-bottom-color: #e2e8f0; }
+body.light-mode .resume-modal-header h3 { color: #1e293b; }
+body.light-mode .resume-modal-close { background: #f1f5f9; color: #1e293b; border-color: #e2e8f0; }
+body.light-mode .resume-modal-body { background: #f8fafc; }
+body.light-mode .btn-resume { color: #1e293b; }
+
+@media screen and (max-width: 768px) {
+    .resume-modal {
+        width: 95%;
+        height: 80vh;
+        border-radius: 20px;
+    }
+    .resume-modal-header { padding: 1rem 1.2rem; }
+    .resume-modal-header h3 { font-size: 1rem; }
+    .btn-download span { display: none; }
 }
 
 /* Services Bar */
@@ -555,6 +724,24 @@ input:checked + .switch-button:before {
     display: flex;
     gap: 1.5rem;
     margin: 2rem 0;
+}
+
+.about-btns {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.about-text .btn-resume {
+    background: transparent;
+    color: var(--text-main);
+    border-color: var(--primary);
+}
+
+.about-text .btn-resume:hover {
+    background: var(--primary);
+    color: white;
 }
 
 .glass-card {
@@ -1117,9 +1304,10 @@ body.light-mode .projects-grid.list-view .project-overlay { background: #ffffff;
 
 /* Footer Styles */
 .footer {
-    padding: 2.5rem 0 1.5rem;
-    background: #0d0b14;
+    padding: 2.5rem 0 1rem;
+    background: transparent;
     border-top: 1px solid var(--glass-border);
+    width: 100%;
 }
 
 .footer-grid {
@@ -1127,7 +1315,7 @@ body.light-mode .projects-grid.list-view .project-overlay { background: #ffffff;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     align-items: flex-start;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .brand-bio.small {
@@ -1172,7 +1360,7 @@ body.light-mode .projects-grid.list-view .project-overlay { background: #ffffff;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--glass-border);
     border-left: 4px solid var(--primary);
-    padding: 2.5rem 3rem;
+    padding: 1.5rem 2rem;
     border-radius: 30px;
     backdrop-filter: blur(20px);
     display: flex;
@@ -1215,7 +1403,7 @@ body.light-mode .projects-grid.list-view .project-overlay { background: #ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 1.5rem;
+    padding-top: 1rem;
     border-top: 1px solid var(--glass-border);
 }
 
@@ -1549,7 +1737,10 @@ body.light-mode .scroll-progress-bar { box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 .btn-solid:hover { transform: scale(1.05); filter: brightness(1.1); }
 
 .btn-outline { background: transparent; border: 2px solid var(--primary); color: white; }
-.btn-outline:hover { background: var(--primary); }
+.btn-outline:hover { background: var(--primary); color: white; }
+
+body.light-mode .btn-outline { color: #1e293b; }
+body.light-mode .btn-outline:hover { color: white; }
 
 /* Mobile Compatibility */
 @media (max-width: 991px) {
@@ -1581,16 +1772,16 @@ body.light-mode .hero {
 }
 
 body.light-mode .hero-overlay {
-    background: linear-gradient(
-        45deg, 
-        rgba(251, 251, 254, 0.95) 0%, 
-        rgba(251, 251, 254, 0.6) 50%, 
+    background: radial-gradient(
+        circle at 20% 50%,
+        rgba(251, 251, 254, 0.85) 0%,
         rgba(251, 251, 254, 0.4) 100%
     );
 }
 
 body.light-mode .role {
-    color: var(--primary);
+    color: #6d28d9;
+    font-weight: 800;
 }
 
 body.light-mode .greeting {
@@ -1699,6 +1890,20 @@ body.light-mode .bar-bg {
     background: #f1f5f9;
 }
 
+body.light-mode .services-bar {
+    background: #ffffff;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .services-list li {
+    color: #1e293b;
+}
+
+body.light-mode .services-list span {
+    color: var(--primary);
+}
+
 /* Light Mode Footer */
 body.light-mode .footer {
     background: #f8fafc;
@@ -1751,6 +1956,17 @@ body.light-mode .exp-title-group h3 { color: #1e293b; }
 body.light-mode .exp-date { background: #f1f5f9; color: #64748b; }
 body.light-mode .coursework-list li, body.light-mode .exp-details li { color: #475569; }
 body.light-mode .timeline-item:hover { background: #f8fafc; }
+
+body.light-mode .toast {
+    background: rgba(255, 255, 255, 0.95);
+    color: #1e293b;
+    border-color: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .toast-content p {
+    color: #64748b;
+}
 
 /* Notification Toasts */
 
