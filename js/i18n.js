@@ -11,6 +11,9 @@ const translations = {
         hero_role: "front-end web designer",
         hero_btn_about: "About",
         hero_btn_contact: "Contact",
+        hero_btn_resume: "View Resume",
+        resume_title: "My Resume",
+        resume_download: "Download",
         
         services_app: "App",
         services_logo: "Logo",
@@ -72,6 +75,9 @@ const translations = {
         hero_role: "front-end web designer",
         hero_btn_about: "Mahitungod",
         hero_btn_contact: "Kontak",
+        hero_btn_resume: "Tan-awa ang Resume",
+        resume_title: "Akong Resume",
+        resume_download: "I-download",
         
         services_app: "App",
         services_logo: "Logo",
