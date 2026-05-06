@@ -69,35 +69,14 @@
 
         <nav class="main-nav">
             <ul class="nav-links">
-                <li><a href="#home" data-i18n="nav_home">Home</a></li>
-                <li><a href="#about" data-i18n="nav_about">About</a></li>
-                <li><a href="#education" data-i18n="nav_education">Education</a></li>
-                <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
-                <li><a href="#experience" data-i18n="nav_experience">Experience</a></li>
-                <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-        <div class="header-actions">
-            <div class="lang-custom-dropdown" id="lang-dropdown">
-                <div class="lang-selected-pill">
-                    <i data-lucide="languages" class="globe-icon"></i>
-                    <span id="current-lang-text">English</span>
-                    <i data-lucide="chevron-down" class="chevron-icon"></i>
-                </div>
-                <div class="lang-options">
-                    <div class="lang-option" data-value="en">English</div>
-                    <div class="lang-option" data-value="bi">Bisaya</div>
-                </div>
-            </div>
-            <div class="theme-switch-pill">
-                <i data-lucide="sun" class="sun-icon"></i>
-                <div class="switch-wrapper">
-                    <input type="checkbox" id="mode-toggle">
-                    <label for="mode-toggle" class="switch-button"></label>
-                </div>
-                <i data-lucide="moon" class="moon-icon"></i>
-            </div>
-        </div>
     </header>
 
     <!-- Hero Section (Full Width) -->
@@ -116,9 +95,10 @@
                 <h1 class="main-name gradient-text">Mica Joy <span>Labis</span></h1>
                 <p class="role" data-i18n="hero_role">front-end web designer</p>
                 <div class="hero-btns">
-                    <a href="#about" class="btn btn-solid" data-i18n="hero_btn_about">About</a>
-                    <a href="#contact" class="btn btn-outline" data-i18n="hero_btn_contact">Contact</a>
+                    <a href="#contact" class="btn btn-solid" data-i18n="hero_btn_about">Let's Work Together</a>
+                    <a href="#projects" class="btn btn-outline" data-i18n="hero_btn_contact">View My Works</a>
                 </div>
+                <p class="hero-description">Specialize in building sleek, high-performance websites that prioritize user experience. By combining technical proficiency in modern front-end frameworks with a passion for minimalist design, I create digital solutions that are as functional as they are visually compelling.</p>
             </div>
         </div>
     </section>
@@ -163,33 +143,26 @@
             <div class="about-grid">
                 <div class="about-text">
                     <h2 class="section-title"><span data-i18n="about_title">About</span> <span data-i18n="about_subtitle">the operator</span></h2>
-                    <p class="about-description" data-i18n="about_desc">
-                        I'm a 2nd year Bachelor of Science in Information Technology (BSIT) student with a deep passion
-                        for web design and development. My journey is driven by the desire to create user-centric,
-                        visually stunning websites that blend creativity with flawless functionality.
+                    <p class="about-description">
+                        I am a Front-End Developer with a keen eye for detail and a deep appreciation for clean, minimalist design. With a background in Information Technology, I focus on the intersection of code and creativity. I am particularly interested in modern UI trends like 'Glassmorhism' and dedicated to writing clean, maintainable code that brings complex designs to life across all devices.
+                    </p>
+
+                    <p class="about-description">
+                        Having worked alongside seasoned developers and managed independent projects, I am comfortable navigating the entire front-end lifecycle–from the first sketch in Figma to the final deployment.
                     </p>
 
                     <div class="info-cards">
-                        <div class="glass-card">
-                            <div class="card-header">
-                                <i data-lucide="palette" class="icon"></i>
-                                <h3 data-i18n="about_hobbies">Hobbies</h3>
-                            </div>
-                            <ul>
-                                <li>Exploring new web design trends</li>
-                                <li>Watching Movies & Anime</li>
-                                <li>Reading & Marketing</li>
-                            </ul>
-                        </div>
-                        <div class="glass-card">
+                        <div class="glass-card soft-skills-card">
                             <div class="card-header">
                                 <i data-lucide="zap" class="icon"></i>
-                                <h3 data-i18n="about_interests">Interests</h3>
+                                <h3>Soft Skills</h3>
                             </div>
                             <ul>
-                                <li>Graphic Design</li>
-                                <li>UI/UX Research</li>
-                                <li>Interactive Prototyping</li>
+                                <li>Visual Communication</li>
+                                <li>Collaborative Problem-Solving</li>
+                                <li>User-Centric Empathy</li>
+                                <li>Attention to Detail</li>
+                                <li>Adaptability & Continuous Learning</li>
                             </ul>
                         </div>
                     </div>
@@ -535,6 +508,14 @@
                             <span data-i18n="contact_send">Send Message</span>
                         </button>
                     </form>
+
+                    <!-- Success Message Modal -->
+                    <div id="success-modal" class="success-modal-overlay">
+                        <div class="success-modal">
+                            <p class="success-message">Your message has been sent successfully!</p>
+                            <button type="button" class="success-close-btn">Close</button>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Contact Info Cards -->
@@ -620,8 +601,7 @@
                     </div>
                 </div>
                 <p class="brand-bio small" data-i18n="footer_bio">
-                    MC.dev is my personal e-portfolio showcasing my journey as a 2nd-year BSIT student. I document my
-                    skills and projects here.
+                    MC.dev is my e‑portfolio showcasing my journey as a  front-end web developer exploring web design and development. Here, I document my skills, projects, and continuous growth in creating user‑friendly and visually engaging digital experiences.
                 </p>
                 <div class="social-boxes small">
                     <a href="tel:+63929657576" class="social-box" title="Phone">
@@ -712,7 +692,6 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="js/act.js"></script>
     <script src="js/ai_chat.js"></script>
-    <script src="js/i18n.js"></script>
     
 </body>
 
