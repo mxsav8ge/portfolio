@@ -7,49 +7,119 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatMessages = document.getElementById('chat-messages');
     const chatQuickSuggestions = document.getElementById('chat-quick-suggestions');
 
-    const chatTranslations = {
-        en: {
-            welcome: "Hi there! 👋 I'm your AI assistant. Ask me anything about MC.Dev's portfolio!",
-            placeholder: "Ask me about skills, resume...",
-            resume_btn: "View My Resume",
-            quick_chats: ["Who are you?", "Skills", "Contact"],
-            error: "Im so sorry i still cant understand that, please ask another question or ask about my resume, about me, my skills and contanct",
-            responses: {
-                hi: "I'm a 2nd year Bachelor of Science in Information Technology (BSIT) student with a deep passion for web design and development. What can i help you? feel free to ask my contacts, resume, experience, skills, education",
-                praise: "Thank you! If you have more questions about me feel free to ask, like about me, contacts, skills, education, or experience.",
-                thanks: "You're welcome! If you have more questions, feel free to ask.",
-                skills: "I specialize in UI/UX Design, Front-End Development (HTML/CSS/JS), and Responsive Design. I'm also proficient in Figma and React!",
-                projects: "You can view my latest work in the Projects section, including DynMovies, Ismeye Gallery, and Xoxo Social.",
-                contact: "Feel free to reach out via the contact form below or email me at micajoylabis@gmail.com. I'd love to hear from you!",
-                about: "I'm Mica Joy Labis, also known as MC.Dev. I'm a front-end designer focused on creating intuitive and beautiful digital experiences.",
-                resume: "I'm a BSIT student at Opol Community College with experience in freelance front-end development and UI/UX design."
+    // --- Page Content Extraction ---
+    const extractPageContent = () => {
+        const content = {
+            skills: [],
+            projects: [],
+            education: null,
+            experience: [],
+            contact: {},
+            about: ""
+        };
+
+        // Extract skills from skill cards
+        const skillCards = document.querySelectorAll('.skill-category-card');
+        skillCards.forEach(card => {
+            const title = card.querySelector('.head-text h3')?.textContent.trim();
+            const skills = [];
+            const skillBars = card.querySelectorAll('.skill-bar-wrapper');
+            skillBars.forEach(bar => {
+                const skillName = bar.querySelector('.skill-info span')?.textContent.trim();
+                if (skillName) skills.push(skillName);
+            });
+            if (title) {
+                content.skills.push({ category: title, items: skills });
             }
-        },
-        bi: {
-            welcome: "Halo! 👋 Ako ang imong AI assistant. Pangutana bisan unsa bahin sa portfolio ni MC.Dev!",
-            placeholder: "Pangutana bahin sa kahanas, resume...",
-            resume_btn: "Tan-awa ang Resume",
-            quick_chats: ["Kinsa ka?", "Kahanas", "Kontak"],
-            error: "Pasensya na, wala ko kasabot niana. Palihog pangutana pag-usab bahin sa akong resume, mahitungod kanako, akong kahanas, o kontak.",
-            responses: {
-                hi: "Usa ako ka 2nd year nga estudyante sa BSIT nga adunay lawom nga kadasig sa web design ug development. Unsay akong ikatabang? Mahimo kang mangutana bahin sa akong kontak, resume, kasinatian, kahanas, o edukasyon.",
-                praise: "Salamat kaayo! Kung naa pa kay mga pangutana bahin kanako, ayaw pagpanuko sa pagpangutana, sama sa mahitungod kanako, kontak, kahanas, edukasyon, o kasinatian.",
-                thanks: "Walay sapayan! Kung naa pa kay mga pangutana, ayaw pagpanuko sa pagpangutana.",
-                skills: "Nag-specialize ko sa UI/UX Design, Front-End Development (HTML/CSS/JS), ug Responsive Design. Hanas usab ko sa Figma ug React!",
-                projects: "Mahimo nimong tan-awon ang akong pinakabag-o nga trabaho sa seksyon sa mga Proyekto, lakip ang DynMovies, Ismeye Gallery, ug Xoxo Social.",
-                contact: "Mobati nga gawasnon sa pagkontak kanako pinaagi sa contact form sa ubos o email kanako sa micajoylabis@gmail.com. Ganahan ko makadungog gikan kanimo!",
-                about: "Ako si Mica Joy Labis, nailhan usab nga MC.Dev. Usa ako ka front-end designer nga naka-focus sa paghimo og intuitive ug nindot nga mga digital experience.",
-                resume: "Usa ako ka estudyante sa BSIT sa Opol Community College nga adunay kasinatian sa freelance front-end development ug UI/UX design."
+        });
+
+        // Extract projects
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            const title = card.getAttribute('data-title');
+            const tags = card.getAttribute('data-tags');
+            if (title) {
+                content.projects.push({ title, tags });
             }
+        });
+
+        // Extract education
+        const eduCard = document.querySelector('.education-card');
+        if (eduCard) {
+            const degree = eduCard.querySelector('.edu-info h3')?.textContent.trim();
+            const institution = eduCard.querySelector('.institution')?.textContent.trim();
+            const coursework = [];
+            eduCard.querySelectorAll('.coursework-list li').forEach(item => {
+                coursework.push(item.textContent.trim());
+            });
+            content.education = { degree, institution, coursework };
         }
+
+        // Extract experience
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        timelineItems.forEach(item => {
+            const title = item.querySelector('.exp-title-group h3')?.textContent.trim();
+            const company = item.querySelector('.exp-company')?.textContent.trim();
+            const details = [];
+            item.querySelectorAll('.exp-details li').forEach(detail => {
+                details.push(detail.textContent.trim());
+            });
+            if (title) {
+                content.experience.push({ title, company, details });
+            }
+        });
+
+        // Extract contact info
+        const contactItems = document.querySelectorAll('.contact-item');
+        contactItems.forEach(item => {
+            const label = item.querySelector('.label')?.textContent.trim();
+            const value = item.querySelector('p')?.textContent.trim();
+            if (label && value) {
+                content.contact[label.toLowerCase()] = value;
+            }
+        });
+
+        // Extract about description
+        const aboutDesc = document.querySelector('.about-description');
+        if (aboutDesc) {
+            content.about = aboutDesc.textContent.trim();
+        }
+
+        return content;
     };
 
-    const getCurrentLang = () => localStorage.getItem('language') || 'en';
+    const pageContent = extractPageContent();
+
+    // AI Assistant Responses
+    const responses = {
+        welcome: "Hi there! 👋 I'm MC.Dev's AI assistant. Ask me about my skills, projects, experience, education, or get in touch!",
+        placeholder: "Ask me anything...",
+        resume_btn: "View My Resume",
+        error: "I'm sorry, I didn't quite understand that. Try asking about my skills, projects, experience, education, or how to contact me!",
+        hi: "I'm Mica Joy Labis, a front-end web developer with a passion for creating visually stunning and user-friendly digital experiences. What would you like to know?",
+        praise: "Thank you so much! I appreciate your kind words. Feel free to explore more of my work or ask any questions!",
+        thanks: "You're welcome! 😊 Let me know if you need anything else.",
+        about: `I'm a front-end web designer specializing in sleek, high-performance websites. I combine technical proficiency with minimalist design to create compelling digital solutions. ${pageContent.about ? 'More about me: ' + pageContent.about.substring(0, 200) + '...' : ''}`,
+        contact: "You can reach me through the contact form or directly via email. What's the best way I can help you?",
+        resume: "I'm a graduate at Opol Community College with hands-on experience in front-end development, UI/UX design, and web development. <br><br> <button class='btn-chat-resume'>View My Resume</button>"
+    };
+
+    // Generate dynamic suggestions based on page content
+    const generateQuickSuggestions = () => {
+        const suggestions = [
+            "Tell me about you",
+        ];
+        
+        if (pageContent.skills.length > 0) suggestions.push("What are your skills?");
+        if (pageContent.projects.length > 0) suggestions.push("Show me your projects");
+        if (pageContent.experience.length > 0) suggestions.push("What's your experience?");
+        
+        return suggestions;
+    };
 
     const renderQuickChats = () => {
-        const lang = getCurrentLang();
-        const chips = chatTranslations[lang].quick_chats;
-        chatQuickSuggestions.innerHTML = chips.map(chip => `<button class="chip">${chip}</button>`).join('');
+        const suggestions = generateQuickSuggestions();
+        chatQuickSuggestions.innerHTML = suggestions.map(chip => `<button class="chip">${chip}</button>`).join('');
     };
 
     // Toggle Chat Window
@@ -57,8 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         chatWindow.classList.toggle('active');
         if (chatWindow.classList.contains('active')) {
             chatInput.focus();
-            const lang = getCurrentLang();
-            chatInput.placeholder = chatTranslations[lang].placeholder;
+            chatInput.placeholder = responses.placeholder;
             renderQuickChats();
         }
     });
@@ -95,12 +164,65 @@ document.addEventListener('DOMContentLoaded', () => {
         return typingDiv;
     };
 
+    // Generate skill response from extracted data
+    const generateSkillsResponse = () => {
+        if (pageContent.skills.length === 0) return responses.error;
+
+        let response = "Here are my key skill areas:<br><br>";
+        pageContent.skills.forEach(skillGroup => {
+            response += `<strong>${skillGroup.category}:</strong> ${skillGroup.items.join(', ')}<br>`;
+        });
+        return response;
+    };
+
+    // Generate projects response from extracted data
+    const generateProjectsResponse = () => {
+        if (pageContent.projects.length === 0) return responses.error;
+
+        let response = "My latest projects include:<br><br>";
+        pageContent.projects.forEach(proj => {
+            response += `<strong>${proj.title}</strong> - ${proj.tags}<br>`;
+        });
+        response += "<br>Check out the projects section for details!";
+        return response;
+    };
+
+    // Generate experience response from extracted data
+    const generateExperienceResponse = () => {
+        if (pageContent.experience.length === 0) return responses.error;
+
+        let response = "Here's my professional experience:<br><br>";
+        pageContent.experience.forEach(exp => {
+            response += `<strong>${exp.title}</strong> at ${exp.company || 'N/A'}<br>`;
+        });
+        return response;
+    };
+
+    // Generate education response from extracted data
+    const generateEducationResponse = () => {
+        if (!pageContent.education) return responses.error;
+
+        const edu = pageContent.education;
+        let response = `<strong>${edu.degree}</strong> from ${edu.institution}<br><br>`;
+        if (edu.coursework.length > 0) {
+            response += "Relevant coursework: ";
+            response += edu.coursework.join(", ");
+        }
+        return response;
+    };
+
+    // Generate contact response from extracted data
+    const generateContactResponse = () => {
+        let response = "You can reach me through:<br><br>";
+        Object.entries(pageContent.contact).forEach(([key, value]) => {
+            response += `<strong>${key}:</strong> ${value}<br>`;
+        });
+        return response;
+    };
+
     const handleChat = async (directText = null) => {
         const text = directText || chatInput.value.trim();
         if (!text) return;
-
-        const lang = getCurrentLang();
-        const t = chatTranslations[lang];
 
         // User Message
         addMessage(text, 'user');
@@ -116,24 +238,49 @@ document.addEventListener('DOMContentLoaded', () => {
             const input = text.toLowerCase();
             let response = "";
 
-            if (input.includes('hello') || input.includes('hi') || input.includes('halo') || input.includes('kumusta') || input.includes('who are you') || input.includes('kinsa ka')) {
-                response = `${t.responses.hi} <br><br> <button class="btn-chat-resume">${t.resume_btn}</button>`;
-            } else if (input.includes('nice') || input.includes('good job') || input.includes('goodjob') || input.includes('great') || input.includes('amazing') || input.includes('pinupuri') || input.includes('wow')) {
-                response = t.responses.praise;
-            } else if (input.includes('thank you') || input.includes('thanks') || input.includes('salamat')) {
-                response = t.responses.thanks;
-            } else if (input.includes('skill') || input.includes('kahanas')) {
-                response = t.responses.skills;
-            } else if (input.includes('project') || input.includes('proyekto')) {
-                response = t.responses.projects;
-            } else if (input.includes('contact') || input.includes('email') || input.includes('kontak')) {
-                response = t.responses.contact;
-            } else if (input.includes('about') || input.includes('mahitungod')) {
-                response = t.responses.about;
-            } else if (input.includes('resume') || input.includes('experience') || input.includes('education') || input.includes('kasinatian')) {
-                response = `${t.responses.resume} <br><br> <button class="btn-chat-resume">${t.resume_btn}</button>`;
-            } else {
-                response = t.error;
+            // Greeting
+            if (input.includes('hello') || input.includes('hi') || input.includes('who are you')) {
+                response = `${responses.hi} <br><br> <button class="btn-chat-resume">${responses.resume_btn}</button>`;
+            }
+            // Praise
+            else if (input.includes('nice') || input.includes('good job') || input.includes('great') || input.includes('amazing') || input.includes('wow')) {
+                response = responses.praise;
+            }
+            // Thanks
+            else if (input.includes('thank you') || input.includes('thanks')) {
+                response = responses.thanks;
+            }
+            // Skills
+            else if (input.includes('skill') || input.includes('expertise') || input.includes('proficient')) {
+                response = generateSkillsResponse();
+            }
+            // Projects
+            else if (input.includes('project') || input.includes('work') || input.includes('portfolio')) {
+                response = generateProjectsResponse();
+            }
+            // Experience
+            else if (input.includes('experience') || input.includes('worked') || input.includes('job')) {
+                response = generateExperienceResponse();
+            }
+            // Education
+            else if (input.includes('education') || input.includes('school') || input.includes('degree')) {
+                response = generateEducationResponse();
+            }
+            // Contact
+            else if (input.includes('contact') || input.includes('email') || input.includes('reach') || input.includes('phone')) {
+                response = generateContactResponse();
+            }
+            // About
+            else if (input.includes('about') || input.includes('tell me') || input.includes('who')) {
+                response = responses.about;
+            }
+            // Resume
+            else if (input.includes('resume') || input.includes('cv')) {
+                response = `${responses.resume}`;
+            }
+            // Default
+            else {
+                response = responses.error;
             }
             
             addMessage(response, 'ai');
@@ -164,8 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial Message
     setTimeout(() => {
-        const lang = getCurrentLang();
-        addMessage(chatTranslations[lang].welcome, "ai");
+        addMessage(responses.welcome, "ai");
         renderQuickChats();
     }, 1000);
 });
