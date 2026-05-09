@@ -303,19 +303,36 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         };
 
-        // Next Button with Loop
+        const updateButtonStates = () => {
+            if (prevBtn) {
+                prevBtn.disabled = currentIndex === 0;
+            }
+            if (nextBtn) {
+                nextBtn.disabled = currentIndex === cards.length - 1;
+            }
+        };
+
+        updateButtonStates();
+
+        // Next Button - No Loop
         if (nextBtn) {
             nextBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % cards.length;
-                updateGallery(currentIndex);
+                if (currentIndex < cards.length - 1) {
+                    currentIndex++;
+                    updateGallery(currentIndex);
+                    updateButtonStates();
+                }
             });
         }
 
-        // Prev Button with Loop
+        // Prev Button - No Loop
         if (prevBtn) {
             prevBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-                updateGallery(currentIndex);
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateGallery(currentIndex);
+                    updateButtonStates();
+                }
             });
         }
 
