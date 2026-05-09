@@ -38,9 +38,11 @@
         <div id="chat-messages" class="chat-messages">
             <!-- Messages dynamic -->
         </div>
-        <div id="chat-quick-suggestions" class="chat-quick-suggestions">
-            <!-- Buttons dynamic -->
-        </div>
+       <div class="chat-quick-suggestions-wrapper">
+    <div id="chat-quick-suggestions" class="chat-quick-suggestions">
+        <!-- Buttons dynamic -->
+    </div>
+</div>
         <div class="chat-input-area">
             <input type="text" id="chat-input" placeholder="Type a message...">
             <button id="send-chat" class="send-chat">
@@ -505,20 +507,11 @@
                             </svg>
                             <span data-i18n="contact_send">Send Message</span>
                         </button>
-                    </form>
-
-                    <!-- Success Message Modal -->
-                    <div id="success-modal" class="success-modal-overlay">
-                        <div class="success-modal">
-                            <p class="success-message">Your message has been sent successfully!</p>
-                            <button type="button" class="success-close-btn">Close</button>
-                        </div>
-                    </div>
-                </div>
-
+                    </form>  <br>
                 <!-- Contact Info Cards -->
                 <div class="contact-cards-container">
                     <div class="info-card socials-card">
+                        
                         <h3>Socials</h3>
                         <div class="card-line"></div>
                         <div class="info-item">
@@ -685,7 +678,13 @@
     <!-- Toast Notifications -->
     <div id="toast-container" class="toast-container"></div>
 
-
+<!-- Success Modal (outside main, full viewport) -->
+    <div id="success-modal" class="success-modal-overlay">
+        <div class="success-modal">
+            <p class="success-message">Your message has been sent successfully!</p>
+            <button type="button" class="success-close-btn">Close</button>
+        </div>
+    </div>
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
