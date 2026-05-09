@@ -464,4 +464,27 @@ document.addEventListener('DOMContentLoaded', () => {
             behavior: 'smooth'
         });
     });
+
+    // --- Smooth Anchor Link Navigation ---
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            // Skip empty href and certain special cases
+            if (href === '#' || href === '#resume') return;
+            
+            e.preventDefault();
+            const targetId = href.substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                const headerHeight = 4 * 16; // 4rem in pixels (assuming 16px base font size)
+                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 });
